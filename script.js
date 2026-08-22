@@ -160,19 +160,115 @@
       deckStatus.textContent = content.copy;
     }
   };
-  deckCards.forEach((card) => card.addEventListener("click", () => activateDeckCard(card)));
+  let deckIndex = 0;
+  let deckCycleTimer = 0;
+  const stopDeckCycle = () => window.clearInterval(deckCycleTimer);
+  const startDeckCycle = () => {
+    stopDeckCycle();
+    if (reduceMotion || deckCards.length < 2 || document.hidden) return;
+    deckCycleTimer = window.setInterval(() => {
+      deckIndex = (deckIndex + 1) % deckCards.length;
+      activateDeckCard(deckCards[deckIndex]);
+    }, 3600);
+  };
+  deckCards.forEach((card, index) => card.addEventListener("click", () => {
+    deckIndex = index;
+    activateDeckCard(card);
+    startDeckCycle();
+  }));
 
   const tiltDeck = $("[data-tilt-deck]");
+  const deckScene = tiltDeck?.closest(".deck-scene");
   if (tiltDeck && window.matchMedia("(pointer: fine)").matches && !reduceMotion) {
-    const scene = tiltDeck.closest(".deck-scene");
-    scene?.addEventListener("pointermove", (event) => {
-      const rect = scene.getBoundingClientRect();
+    deckScene?.addEventListener("pointermove", (event) => {
+      const rect = deckScene.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
       const y = (event.clientY - rect.top) / rect.height - 0.5;
       tiltDeck.style.transform = `rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg)`;
     });
-    scene?.addEventListener("pointerleave", () => { tiltDeck.style.transform = "rotateX(0) rotateY(0)"; });
+    deckScene?.addEventListener("pointerleave", () => { tiltDeck.style.transform = "rotateX(0) rotateY(0)"; });
   }
+  deckScene?.addEventListener("pointerenter", stopDeckCycle);
+  deckScene?.addEventListener("pointerleave", startDeckCycle);
+  deckScene?.addEventListener("focusin", stopDeckCycle);
+  deckScene?.addEventListener("focusout", startDeckCycle);
+  document.addEventListener("visibilitychange", () => document.hidden ? stopDeckCycle() : startDeckCycle());
+  startDeckCycle();
+
+  // Roller de protótipos com pausa explícita
+  const prototypeRail = $(".prototype-rail");
+  const rollerToggle = $("[data-roller-toggle]");
+  rollerToggle?.addEventListener("click", () => {
+    const paused = !prototypeRail.classList.contains("is-paused");
+    prototypeRail.classList.toggle("is-paused", paused);
+    rollerToggle.setAttribute("aria-pressed", String(paused));
+    $("[data-roller-toggle-label]", rollerToggle).textContent = paused ? "Retomar roller" : "Pausar roller";
+    const icon = $("i", rollerToggle);
+    if (icon) icon.textContent = paused ? "▶" : "Ⅱ";
+    trackEvent("prototype_roller_toggle", { state: paused ? "paused" : "playing" });
+  });
+
+  // Movimento sutil nas fotos, preservando o enquadramento nativo
+  const parallaxMedia = $$('[data-parallax-media]');
+  let parallaxTicking = false;
+  const updateParallax = () => {
+    if (reduceMotion) return;
+    parallaxMedia.forEach((media) => {
+      const rect = media.getBoundingClientRect();
+      if (rect.bottom < -100 || rect.top > window.innerHeight + 100) return;
+      const maxShift = Number(media.dataset.parallaxMedia || 0);
+      const progress = Math.max(-1, Math.min(1, (window.innerHeight / 2 - (rect.top + rect.height / 2)) / (window.innerHeight / 2 + rect.height / 2)));
+      media.style.setProperty("--media-shift", `${(progress * maxShift).toFixed(2)}px`);
+    });
+    parallaxTicking = false;
+  };
+  if (parallaxMedia.length && !reduceMotion) {
+    window.addEventListener("scroll", () => {
+      if (parallaxTicking) return;
+      parallaxTicking = true;
+      requestAnimationFrame(updateParallax);
+    }, { passive: true });
+    updateParallax();
+  }
+
+  // Cases viram trilha horizontal no mobile
+  const caseCarousel = $("[data-case-carousel]");
+  const caseCards = caseCarousel ? $$(".case-card", caseCarousel) : [];
+  const caseCurrent = $("[data-case-current]");
+  let caseScrollTicking = false;
+  const updateCaseCounter = () => {
+    if (!caseCarousel || !caseCards.length) return;
+    const center = caseCarousel.scrollLeft + caseCarousel.clientWidth / 2;
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+    caseCards.forEach((card, index) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(center - cardCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+    if (caseCurrent) caseCurrent.textContent = String(closestIndex + 1).padStart(2, "0");
+    caseScrollTicking = false;
+  };
+  const moveCase = (direction) => {
+    if (!caseCarousel || !caseCards.length) return;
+    const currentIndex = Number(caseCurrent?.textContent || 1) - 1;
+    const nextIndex = (currentIndex + direction + caseCards.length) % caseCards.length;
+    const card = caseCards[nextIndex];
+    const left = card.offsetLeft - (caseCarousel.clientWidth - card.offsetWidth) / 2;
+    caseCarousel.scrollTo({ left, behavior: reduceMotion ? "auto" : "smooth" });
+    if (caseCurrent) caseCurrent.textContent = String(nextIndex + 1).padStart(2, "0");
+    trackEvent("case_carousel", { direction: direction > 0 ? "next" : "previous", case_index: nextIndex + 1 });
+  };
+  $("[data-case-prev]")?.addEventListener("click", () => moveCase(-1));
+  $("[data-case-next]")?.addEventListener("click", () => moveCase(1));
+  caseCarousel?.addEventListener("scroll", () => {
+    if (caseScrollTicking) return;
+    caseScrollTicking = true;
+    requestAnimationFrame(updateCaseCounter);
+  }, { passive: true });
 
   // Diagnóstico em duas perguntas
   const expressForm = $("#express-form");
