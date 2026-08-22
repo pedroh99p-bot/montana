@@ -8,6 +8,34 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const schedulerUrl = $('meta[name="montana:scheduler-url"]')?.content.trim() || "";
 
+  // Abertura curta: espera os ativos essenciais e revela o hero sob a cortina
+  const preloader = $("[data-preloader]");
+  const preloadStartedAt = performance.now();
+  let preloadQueued = false;
+  const revealExperience = () => {
+    if (preloadQueued) return;
+    preloadQueued = true;
+    const minimumVisibleTime = reduceMotion ? 0 : 850;
+    const delay = Math.max(0, minimumVisibleTime - (performance.now() - preloadStartedAt));
+    window.setTimeout(() => {
+      document.body.classList.remove("is-preloading");
+      document.body.classList.add("is-loaded", "preloader-leaving");
+      preloader?.setAttribute("aria-hidden", "true");
+      window.setTimeout(() => {
+        preloader?.classList.add("is-complete");
+        document.body.classList.remove("preloader-leaving");
+      }, reduceMotion ? 0 : 1050);
+    }, delay);
+  };
+  if (preloader) {
+    document.body.classList.add("is-preloading");
+    if (document.readyState === "complete") revealExperience();
+    else window.addEventListener("load", revealExperience, { once: true });
+    window.setTimeout(revealExperience, 2400);
+  } else {
+    document.body.classList.add("is-loaded");
+  }
+
   const trackEvent = (name, detail = {}) => {
     const safeDetail = { ...detail, path: window.location.pathname };
     window.dispatchEvent(new CustomEvent(`montana:${name}`, { detail: safeDetail }));
@@ -230,45 +258,6 @@
     }, { passive: true });
     updateParallax();
   }
-
-  // Cases viram trilha horizontal no mobile
-  const caseCarousel = $("[data-case-carousel]");
-  const caseCards = caseCarousel ? $$(".case-card", caseCarousel) : [];
-  const caseCurrent = $("[data-case-current]");
-  let caseScrollTicking = false;
-  const updateCaseCounter = () => {
-    if (!caseCarousel || !caseCards.length) return;
-    const center = caseCarousel.scrollLeft + caseCarousel.clientWidth / 2;
-    let closestIndex = 0;
-    let closestDistance = Infinity;
-    caseCards.forEach((card, index) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const distance = Math.abs(center - cardCenter);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
-      }
-    });
-    if (caseCurrent) caseCurrent.textContent = String(closestIndex + 1).padStart(2, "0");
-    caseScrollTicking = false;
-  };
-  const moveCase = (direction) => {
-    if (!caseCarousel || !caseCards.length) return;
-    const currentIndex = Number(caseCurrent?.textContent || 1) - 1;
-    const nextIndex = (currentIndex + direction + caseCards.length) % caseCards.length;
-    const card = caseCards[nextIndex];
-    const left = card.offsetLeft - (caseCarousel.clientWidth - card.offsetWidth) / 2;
-    caseCarousel.scrollTo({ left, behavior: reduceMotion ? "auto" : "smooth" });
-    if (caseCurrent) caseCurrent.textContent = String(nextIndex + 1).padStart(2, "0");
-    trackEvent("case_carousel", { direction: direction > 0 ? "next" : "previous", case_index: nextIndex + 1 });
-  };
-  $("[data-case-prev]")?.addEventListener("click", () => moveCase(-1));
-  $("[data-case-next]")?.addEventListener("click", () => moveCase(1));
-  caseCarousel?.addEventListener("scroll", () => {
-    if (caseScrollTicking) return;
-    caseScrollTicking = true;
-    requestAnimationFrame(updateCaseCounter);
-  }, { passive: true });
 
   // Diagnóstico em duas perguntas
   const expressForm = $("#express-form");

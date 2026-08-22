@@ -24,23 +24,31 @@
   <meta name="twitter:image" content="https://montana-tech-lab.vercel.app/assets/og-cover.png">
   <meta name="montana:scheduler-url" content="">
   <title>Montana Tech Lab — Estratégia, tecnologia e operação</title>
+  <script>document.documentElement.classList.add("has-js");</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/montana-mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"ProfessionalService","name":"Montana Tech Lab","url":"https://montana-tech-lab.vercel.app/","image":"https://montana-tech-lab.vercel.app/assets/og-cover.png","description":"Estratégia, marketing e tecnologia conectados para estruturar presença, captação e operação digital.","areaServed":"BR","sameAs":["https://www.instagram.com/montanatechlab/"]}
   </script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <div class="preloader" data-preloader role="status" aria-live="polite" aria-label="Preparando experiência">
+    <div class="preloader-inner">
+      <div class="preloader-orbit" aria-hidden="true"><span></span><img src="assets/montana-mark.svg" alt="" width="78" height="78"></div>
+      <p>Preparando experiência</p>
+      <div class="preloader-progress" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
   <div class="noise" aria-hidden="true"></div>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
   <header class="site-header" id="inicio">
     <a class="brand" href="#inicio" aria-label="Montana Tech Lab — início"><img src="assets/montana-mark.svg" alt="" width="52" height="52"><span class="brand-copy"><strong>MONTANA</strong><small>TECH LAB</small></span></a>
-    <nav class="desktop-nav" aria-label="Navegação principal"><a href="#caminhos">Soluções</a><a href="#projetos">Experiência</a><a href="#metodo">Método</a><a href="#equipe">Quem faz</a></nav>
+    <nav class="desktop-nav" aria-label="Navegação principal"><a href="#caminhos">Soluções</a><a href="#metodo">Método</a><a href="#equipe">Quem faz</a><a href="#qualificacao">Conversa</a></nav>
     <a class="header-cta" href="#diagnostico-expresso" data-track-cta="header"><span>Fazer diagnóstico</span><span aria-hidden="true">↓</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
   </header>
@@ -50,7 +58,7 @@
       <a class="brand" href="#inicio" aria-label="Montana Tech Lab — início"><img src="assets/montana-mark.svg" alt="" width="48" height="48"><span class="brand-copy"><strong>MONTANA</strong><small>TECH LAB</small></span></a>
       <button class="menu-close" type="button" aria-label="Fechar menu"><span aria-hidden="true">×</span></button>
     </div>
-    <nav aria-label="Navegação mobile"><a href="#caminhos"><span>01</span>Soluções</a><a href="#projetos"><span>02</span>Experiência</a><a href="#metodo"><span>03</span>Método</a><a href="#equipe"><span>04</span>Quem faz</a><a href="#qualificacao"><span>05</span>Agendar conversa</a></nav>
+    <nav aria-label="Navegação mobile"><a href="#diagnostico-expresso"><span>01</span>Diagnóstico</a><a href="#caminhos"><span>02</span>Soluções</a><a href="#metodo"><span>03</span>Método</a><a href="#equipe"><span>04</span>Quem faz</a><a href="#qualificacao"><span>05</span>Agendar conversa</a></nav>
     <a class="button button-primary mobile-menu-cta" href="#diagnostico-expresso" data-track-cta="menu">Descobrir meu próximo passo <span>→</span></a>
   </div>
 
@@ -60,7 +68,7 @@
         <span class="eyebrow">[ ESTRATÉGIA + TECNOLOGIA + OPERAÇÃO ]</span>
         <h1 id="hero-title">Transformamos presença digital em uma operação que <em>gera e acompanha oportunidades.</em></h1>
         <p>A Montana conecta <strong>posicionamento, conteúdo, tráfego, sites, sistemas e IA</strong> para negócios que precisam vender melhor e perder menos oportunidades no caminho.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#diagnostico-expresso" data-track-cta="hero-diagnostico"><span>Descobrir meu próximo passo</span><span aria-hidden="true">↓</span></a><a class="button button-secondary" href="#projetos" data-track-cta="hero-projetos"><span class="status-dot"></span><span>Ver estruturas entregues</span><span aria-hidden="true">→</span></a></div>
+        <div class="hero-actions"><a class="button button-primary" href="#diagnostico-expresso" data-track-cta="hero-diagnostico"><span>Descobrir meu próximo passo</span><span aria-hidden="true">↓</span></a><a class="button button-secondary" href="#caminhos" data-track-cta="hero-caminhos"><span class="status-dot"></span><span>Ver caminhos de solução</span><span aria-hidden="true">→</span></a></div>
         <div class="hero-proof" aria-label="Resumo da atuação"><span>ESTRATÉGIA</span><i></i><span>IMPLEMENTAÇÃO</span><i></i><span>EVOLUÇÃO</span></div>
       </div>
 
@@ -161,37 +169,26 @@
 
     <div class="kinetic-divider" aria-hidden="true"><div><span>ESTRATÉGIA</span><i>×</i><span>TECNOLOGIA</span><i>×</i><span>OPERAÇÃO</span><i>×</i><span>ESTRATÉGIA</span><i>×</i><span>TECNOLOGIA</span><i>×</i><span>OPERAÇÃO</span><i>×</i></div></div>
 
-    <section class="cases-section section-shell" id="projetos" aria-labelledby="cases-title">
-      <div class="section-heading section-heading-split reveal"><div><span class="section-index">04 — EXPERIÊNCIA APLICADA</span><h2 id="cases-title">Estruturas construídas para <em>contextos reais.</em></h2></div><p>O roller apresenta conceitos de marca. Aqui, a composição muda de escala para destacar desafio, experiência e operação.</p></div>
-      <div class="case-carousel-tools reveal"><span><strong data-case-current>01</strong> / 03 &nbsp; DESLIZE OS CASES</span><div><button type="button" data-case-prev aria-label="Case anterior">←</button><button type="button" data-case-next aria-label="Próximo case">→</button></div></div>
-      <div class="case-grid" data-case-carousel>
-        <article class="case-card case-dark case-feature reveal reveal-scale"><div class="case-visual" aria-hidden="true"><div class="ui-bar"><span></span><span></span><span></span></div><div class="data-map"><span></span><span></span><i></i><b></b></div></div><div class="case-copy"><span>IMPACTO AMBIENTAL</span><h3>Informação pública, dados e atendimento no mesmo ambiente</h3><p>Estrutura digital com apresentação do projeto, indicadores atualizados e apoio de atendimento assistido por IA.</p><div class="tag-list"><span>Landing page</span><span>Dados</span><span>IA</span></div></div></article>
-        <article class="case-card case-light case-compact reveal reveal-right"><div class="case-visual" aria-hidden="true"><div class="ui-bar"><span></span><span></span><span></span></div><div class="dashboard-lines"><i></i><i></i><i></i><b></b></div></div><div class="case-copy"><span>SAÚDE &amp; MOBILIZAÇÃO</span><h3>Plataforma pública conectada à gestão da operação</h3><p>Experiência de comunicação, cadastro e área administrativa para organizar informação e acompanhamento.</p><div class="tag-list"><span>Plataforma</span><span>Dashboard</span><span>Gestão</span></div></div></article>
-        <article class="case-card case-accent case-compact reveal reveal-right"><div class="case-visual" aria-hidden="true"><div class="ui-bar"><span></span><span></span><span></span></div><div class="shop-grid"><i></i><i></i><i></i><i></i></div></div><div class="case-copy"><span>VAREJO &amp; OPERAÇÃO</span><h3>Venda digital com os bastidores necessários para funcionar</h3><p>Catálogo, checkout, estoque, frete e gestão de produtos tratados como uma única jornada operacional.</p><div class="tag-list"><span>E-commerce</span><span>Checkout</span><span>Estoque</span></div></div></article>
-      </div>
-      <p class="authorization-note reveal"><span>i</span> Os símbolos do roller são protótipos visuais e devem ser substituídos pelas logos oficiais aprovadas.</p>
-    </section>
-
     <section class="method-section" id="metodo" aria-labelledby="method-title"><div class="section-shell">
-      <div class="section-heading section-heading-split reveal"><div><span class="section-index">05 — SISTEMA MONTANA</span><h2 id="method-title">Da atenção à próxima ação, <em>sem deixar o lead cair entre as etapas.</em></h2></div><p>O trabalho conecta mensagem, canal e operação. Assim, cada camada prepara a próxima.</p></div>
+      <div class="section-heading section-heading-split reveal"><div><span class="section-index">04 — SISTEMA MONTANA</span><h2 id="method-title">Da atenção à próxima ação, <em>sem deixar o lead cair entre as etapas.</em></h2></div><p>O trabalho conecta mensagem, canal e operação. Assim, cada camada prepara a próxima.</p></div>
       <div class="method-flow reveal"><article><span>01</span><div><small>POSICIONAR</small><h3>Clareza que cria interesse</h3><p>Oferta, narrativa, conteúdo e experiência visual alinhados ao valor da operação.</p></div></article><i aria-hidden="true">→</i><article><span>02</span><div><small>CAPTAR</small><h3>Jornada que gera oportunidade</h3><p>Campanhas e destinos preparados para transformar atenção em intenção.</p></div></article><i aria-hidden="true">→</i><article><span>03</span><div><small>CONVERTER</small><h3>Processo que sustenta crescimento</h3><p>Dados, acompanhamento, automações e próximos passos visíveis para a equipe.</p></div></article></div>
     </div></section>
 
-    <section class="process-section section-shell" aria-labelledby="process-title"><div class="section-heading reveal"><span class="section-index">06 — COMO ACONTECE</span><h2 id="process-title">Um projeto com começo claro e <em>evolução contínua.</em></h2></div><p class="horizontal-hint" aria-hidden="true">DESLIZE O PROCESSO <span>→</span></p><ol class="process-list reveal"><li><span>01</span><div><h3>Diagnóstico</h3><p>Entendemos cenário, gargalo, objetivo e o que já existe.</p></div></li><li><span>02</span><div><h3>Direção</h3><p>Definimos prioridade, escopo e o critério de sucesso.</p></div></li><li><span>03</span><div><h3>Implementação</h3><p>Construímos a solução com checkpoints e visão de negócio.</p></div></li><li><span>04</span><div><h3>Evolução</h3><p>Medimos, aprendemos e indicamos a próxima alavanca.</p></div></li></ol></section>
+    <section class="process-section section-shell" aria-labelledby="process-title"><div class="section-heading reveal"><span class="section-index">05 — COMO ACONTECE</span><h2 id="process-title">Um projeto com começo claro e <em>evolução contínua.</em></h2></div><p class="horizontal-hint" aria-hidden="true">DESLIZE O PROCESSO <span>→</span></p><ol class="process-list reveal"><li><span>01</span><div><h3>Diagnóstico</h3><p>Entendemos cenário, gargalo, objetivo e o que já existe.</p></div></li><li><span>02</span><div><h3>Direção</h3><p>Definimos prioridade, escopo e o critério de sucesso.</p></div></li><li><span>03</span><div><h3>Implementação</h3><p>Construímos a solução com checkpoints e visão de negócio.</p></div></li><li><span>04</span><div><h3>Evolução</h3><p>Medimos, aprendemos e indicamos a próxima alavanca.</p></div></li></ol></section>
 
     <section class="team-section" id="equipe" aria-labelledby="team-title">
       <div class="team-ghost" aria-hidden="true"><span>MONTANA</span><span>CORE</span></div>
       <div class="section-shell team-shell">
-        <div class="team-intro reveal"><span class="section-index">07 — QUEM CONECTA AS PONTAS</span><h2 id="team-title">Duas especialidades.<br><em>Uma direção.</em></h2><p>Você conversa com quem pensa a solução e acompanha a implementação — sem o projeto se perder entre áreas desconectadas.</p></div>
+        <div class="team-intro reveal"><span class="section-index">06 — QUEM CONECTA AS PONTAS</span><h2 id="team-title">Duas especialidades.<br><em>Uma direção.</em></h2><p>Você conversa com quem pensa a solução e acompanha a implementação — sem o projeto se perder entre áreas desconectadas.</p></div>
         <div class="team-stage">
           <article class="founder-feature founder-pedro reveal reveal-left">
-            <figure data-parallax-media="-18"><img src="assets/pedro-montana.webp" alt="Pedro Montana" width="900" height="1125" loading="lazy"></figure>
-            <div class="founder-overlay"><span>01 / ESTRATÉGIA &amp; CRESCIMENTO</span><h3>Pedro<br>Montana</h3><p>Posicionamento, conteúdo, aquisição e direção comercial.</p></div>
+            <figure data-parallax-media="-18"><img src="assets/pedro-montana.webp" alt="Pedro, especialista em estratégia e crescimento" width="900" height="1125" loading="lazy"></figure>
+            <div class="founder-overlay"><span>01 / ESTRATÉGIA &amp; CRESCIMENTO</span><h3>Pedro</h3><p>Posicionamento, conteúdo, aquisição e direção comercial.</p></div>
           </article>
           <div class="team-core" aria-hidden="true"><img src="assets/montana-mark.svg" alt=""><span>ESTRATÉGIA</span><i></i><span>TECNOLOGIA</span></div>
           <article class="founder-feature founder-guilherme reveal reveal-right">
-            <figure data-parallax-media="18"><img src="assets/guilherme-montana.webp" alt="Guilherme Montana" width="900" height="1599" loading="lazy"></figure>
-            <div class="founder-overlay"><span>02 / PRODUTO &amp; TECNOLOGIA</span><h3>Guilherme<br>Montana</h3><p>Experiência digital, sistemas, automações e IA.</p></div>
+            <figure data-parallax-media="18"><img src="assets/guilherme-montana.webp" alt="Guilherme, especialista em produto e tecnologia" width="900" height="1599" loading="lazy"></figure>
+            <div class="founder-overlay"><span>02 / PRODUTO &amp; TECNOLOGIA</span><h3>Guilherme</h3><p>Experiência digital, sistemas, automações e IA.</p></div>
           </article>
         </div>
         <div class="team-principles reveal"><span><b>01</b>Decisão sem telefone sem fio</span><span><b>02</b>Estratégia já pensando na execução</span><span><b>03</b>Tecnologia conectada ao negócio</span></div>
@@ -199,7 +196,7 @@
     </section>
 
     <section class="qualification-section section-shell" id="qualificacao" aria-labelledby="qualification-title">
-      <div class="qualification-aside reveal"><span class="section-index">08 — CONVERSA DE DIREÇÃO</span><h2 id="qualification-title">Já sabe o que precisa? Envie o contexto e <em>avance para uma conversa.</em></h2><p>Este formulário é para quem já tem um desafio mais claro e quer dar profundidade à primeira conversa.</p><div class="qualification-expectation"><span>O que acontece depois</span><ol><li>Seu contexto chega organizado.</li><li>A Montana avalia a aderência do projeto.</li><li>O próximo passo segue pelo contato informado.</li></ol></div></div>
+      <div class="qualification-aside reveal"><span class="section-index">07 — CONVERSA DE DIREÇÃO</span><h2 id="qualification-title">Já sabe o que precisa? Envie o contexto e <em>avance para uma conversa.</em></h2><p>Este formulário é para quem já tem um desafio mais claro e quer dar profundidade à primeira conversa.</p><div class="qualification-expectation"><span>O que acontece depois</span><ol><li>Seu contexto chega organizado.</li><li>A Montana avalia a aderência do projeto.</li><li>O próximo passo segue pelo contato informado.</li></ol></div></div>
       <form class="qualification-form reveal" id="qualification-form" novalidate>
         <div class="honeypot" aria-hidden="true"><label>Não preencha este campo<input type="text" name="website_url" tabindex="-1" autocomplete="off"></label></div>
         <div class="field-row"><label class="field"><span>Seu nome</span><input type="text" name="name" autocomplete="name" required placeholder="Como podemos te chamar?"></label><label class="field"><span>Empresa ou projeto</span><input type="text" name="company" autocomplete="organization" required placeholder="Nome da operação"></label></div>
@@ -216,16 +213,30 @@
     </section>
 
     <section class="faq-section" aria-labelledby="faq-title"><div class="section-shell faq-shell">
-      <div class="section-heading reveal"><span class="section-index">09 — PERGUNTAS FREQUENTES</span><h2 id="faq-title">Antes da primeira <em>conversa.</em></h2></div>
+      <div class="section-heading reveal"><span class="section-index">08 — PERGUNTAS FREQUENTES</span><h2 id="faq-title">Antes da primeira <em>conversa.</em></h2></div>
       <div class="faq-list reveal"><details><summary>Vocês fazem apenas sites?<span>+</span></summary><p>Não. Sites, lojas e landing pages são parte de uma estrutura maior. A Montana também atua em posicionamento, conteúdo, campanhas, sistemas, automações e IA quando essas frentes ajudam a resolver o gargalo do negócio.</p></details><details><summary>Preciso saber exatamente qual solução contratar?<span>+</span></summary><p>Não. O diagnóstico existe justamente para separar o sintoma da prioridade. Você pode chegar com um problema, e a direção do projeto é construída a partir dele.</p></details><details><summary>Como prazo e investimento são definidos?<span>+</span></summary><p>Depois de entender objetivo, complexidade, integrações e o que já existe, a Montana organiza escopo, etapas e proposta. Assim, a estimativa nasce do cenário real e não de um pacote genérico.</p></details><details><summary>O que acontece depois de enviar o formulário?<span>+</span></summary><p>O contexto é avaliado para verificar aderência e preparar uma conversa mais objetiva. O retorno e a próxima ação seguem pelo canal informado por você.</p></details><details><summary>Existe acompanhamento depois da entrega?<span>+</span></summary><p>Quando o projeto pede evolução contínua, a operação pode incluir acompanhamento, mensuração e novas implementações. O formato é definido conforme a necessidade.</p></details></div>
     </div></section>
 
     <section class="final-section section-shell" aria-labelledby="final-title"><div class="final-mark" aria-hidden="true"><img src="assets/montana-mark.svg" alt=""></div><span class="eyebrow">[ SEU PRÓXIMO PASSO PODE COMEÇAR AGORA ]</span><h2 id="final-title">Não precisa decidir a ferramenta.<br><em>Comece pelo gargalo.</em></h2><div class="final-actions"><a class="button button-primary" href="#diagnostico-expresso" data-track-cta="final-diagnostico">Fazer diagnóstico rápido <span>↑</span></a><a class="button button-secondary" href="#qualificacao" data-track-cta="final-qualificacao">Enviar contexto completo <span>→</span></a></div></section>
   </main>
 
-  <footer class="site-footer"><div class="footer-brand"><img src="assets/montana-mark.svg" alt="" width="42" height="42"><span><strong>MONTANA</strong><small>TECH LAB</small></span></div><p>Estratégia, tecnologia e operação conectadas.</p><nav aria-label="Links do rodapé"><a href="https://www.instagram.com/montanatechlab/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="privacidade.html">Privacidade</a><a href="#inicio">Voltar ao topo ↑</a></nav><small>© <span data-current-year>2026</span> Montana Tech Lab</small></footer>
+  <footer class="site-footer">
+    <div class="footer-heading">
+      <a class="footer-brand" href="#inicio" aria-label="Montana Tech Lab — voltar ao início"><img src="assets/montana-mark.svg" alt="" width="68" height="68"><span><strong>MONTANA</strong><small>TECH LAB</small></span></a>
+      <span class="footer-kicker">ESTRATÉGIA × TECNOLOGIA × OPERAÇÃO</span>
+      <p>Conectamos posicionamento, aquisição e sistemas para transformar presença digital em uma operação mais clara.</p>
+    </div>
+    <nav class="footer-shortcuts" aria-label="Atalhos do rodapé">
+      <a href="#diagnostico-expresso"><span>01</span><strong>Diagnóstico</strong><i aria-hidden="true">↗</i></a>
+      <a href="#caminhos"><span>02</span><strong>Soluções</strong><i aria-hidden="true">↗</i></a>
+      <a href="#metodo"><span>03</span><strong>Método</strong><i aria-hidden="true">↗</i></a>
+      <a href="#equipe"><span>04</span><strong>Especialistas</strong><i aria-hidden="true">↗</i></a>
+      <a href="#qualificacao"><span>05</span><strong>Agendar conversa</strong><i aria-hidden="true">↗</i></a>
+    </nav>
+    <div class="footer-bottom"><small>© <span data-current-year>2026</span> Montana Tech Lab</small><div><a href="https://www.instagram.com/montanatechlab/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="privacidade.html">Privacidade</a></div><a href="#inicio">Voltar ao topo ↑</a></div>
+  </footer>
   <a class="mobile-sticky-cta" href="#diagnostico-expresso" data-track-cta="mobile-sticky"><span>Fazer diagnóstico rápido</span><span aria-hidden="true">→</span></a>
   <noscript><div class="noscript-note">Para usar o diagnóstico interativo, ative o JavaScript. Você também pode falar com a Montana pelo <a href="https://www.instagram.com/montanatechlab/">Instagram</a>.</div></noscript>
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>
