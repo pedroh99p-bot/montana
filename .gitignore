@@ -1,0 +1,25 @@
+# Material interno — não publicar no repositório público
+docs/
+portfolio/
+
+# Imagens-fonte não utilizadas na versão publicada
+assets/pedro-montana.jpeg
+assets/guilherme-montana.png
+
+# Segredos e configuração local
+.env
+.env.*
+!.env.example
+.vercel/
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Logs e temporários
+*.log
+*.tmp
+*.bak
