@@ -808,5 +808,5 @@ body.preloader-leaving .preloader-inner { opacity: 0; filter: blur(8px); transfo
 
 @media (max-width: 640px) {
   /* Ajuste estático de enquadramento: não é animação e permanece com movimento reduzido. */
-  .founder-guilherme img, .founder-guilherme:hover img { transform: translateY(-1.5%) scale(1.075) !important; }
+  .founder-guilherme img, .founder-guilherme:hover img { transform: translateY(-3.5%) scale(1.075) !important; }
 }
