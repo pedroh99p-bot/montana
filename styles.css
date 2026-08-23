@@ -805,3 +805,8 @@ body.preloader-leaving .preloader-inner { opacity: 0; filter: blur(8px); transfo
   .preloader, .preloader-inner, .site-header, .hero { transition-duration: .01ms !important; }
   .preloader-orbit::before, .preloader-orbit::after, .preloader-progress i { animation: none !important; }
 }
+
+@media (max-width: 640px) {
+  /* Ajuste estático de enquadramento: não é animação e permanece com movimento reduzido. */
+  .founder-guilherme img, .founder-guilherme:hover img { transform: translateY(-1.5%) scale(1.075) !important; }
+}
